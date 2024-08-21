@@ -1,9 +1,8 @@
 import express, { Application } from 'express';
 import dotenv from 'dotenv';
-import authRoutes from './routes/authRoutes';
 import financialDataRoutes from './routes/financialDataRoutes';
 import chatbotRoutes from './routes/chatbotRoutes';
-import { errorMiddleware } from './middlewares/errorMiddleware';
+import errorMiddleware from './middlewares/errorMiddleware';
 
 dotenv.config();
 
@@ -11,7 +10,6 @@ const app: Application = express();
 
 app.use(express.json());
 
-app.use('/api/auth', authRoutes);
 app.use('/api/data', financialDataRoutes);
 app.use('/api/chatbot', chatbotRoutes);
 
