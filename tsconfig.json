@@ -14,12 +14,12 @@
         "resolveJsonModule": true, // Include modules that can import JSON files
         "typeRoots": [
             "./node_modules/@types",
-            "./types"
-        ] // Specify where TypeScript should look for type definitions
+            "./src/types" // Ensure this is correct; custom types should be in src/types
+        ]
     },
     "include": [
         "src/**/*", // Include all TypeScript files in the src directory
-        "types/express.d.ts" // Ensure TypeScript includes your custom types
+        "src/types/**/*.d.ts" // Ensure TypeScript includes your custom types
     ],
     "exclude": [
         "node_modules", // Exclude node_modules directory

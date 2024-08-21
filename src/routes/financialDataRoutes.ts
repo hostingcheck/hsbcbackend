@@ -1,19 +1,19 @@
 import express from 'express';
 import {
     getFinancialData,
-    addFinancialData,
+    getFinancialDataById,
+    createFinancialData,
     updateFinancialData,
     deleteFinancialData,
-    getAggregatedData
 } from '../controllers/financialDataController';
-import { authMiddleware } from '../middlewares/authMiddleware';
+import authenticateToken from '../middlewares/authMiddleware';
 
 const router = express.Router();
 
-router.get('/financial-data', authMiddleware, getFinancialData);
-router.post('/financial-data', authMiddleware, addFinancialData);
-router.put('/financial-data/:id', authMiddleware, updateFinancialData);
-router.delete('/financial-data/:id', authMiddleware, deleteFinancialData);
-router.get('/financial-data/aggregate', authMiddleware, getAggregatedData);
+router.get('/data', authenticateToken, getFinancialData);
+router.get('/data/:id', authenticateToken, getFinancialDataById);
+router.post('/data', authenticateToken, createFinancialData);
+router.put('/data/:id', authenticateToken, updateFinancialData);
+router.delete('/data/:id', authenticateToken, deleteFinancialData);
 
 export default router;

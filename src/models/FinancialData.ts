@@ -5,27 +5,25 @@ export interface IFinancialData extends Document {
     customer: string;
     age: number;
     gender: string;
-    zipcodeOri: string;
+    zipCodeOri: string;
     merchant: string;
     zipMerchant: string;
     category: string;
     amount: number;
-    fraud: boolean;
+    fraud: number;
 }
 
-const FinancialDataSchema: Schema = new Schema({
+const financialDataSchema: Schema = new Schema({
     step: { type: Number, required: true },
     customer: { type: String, required: true },
     age: { type: Number, required: true },
     gender: { type: String, required: true },
-    zipcodeOri: { type: String, required: true },
+    zipCodeOri: { type: String, required: true },
     merchant: { type: String, required: true },
     zipMerchant: { type: String, required: true },
     category: { type: String, required: true },
     amount: { type: Number, required: true },
-    fraud: { type: Boolean, required: true },
+    fraud: { type: Number, required: true },
 });
 
-FinancialDataSchema.index({ customer: 1, category: 1, fraud: 1 });
-
-export default mongoose.model<IFinancialData>('FinancialData', FinancialDataSchema);
+export default mongoose.model<IFinancialData>('FinancialData', financialDataSchema);
